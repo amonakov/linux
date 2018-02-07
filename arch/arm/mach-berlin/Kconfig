@@ -24,7 +24,7 @@ config MACH_BERLIN_BG2
 config MACH_BERLIN_BG2CD
 	bool "Marvell Armada 1500-mini (BG2CD)"
 	select CACHE_L2X0
-	select HAVE_ARM_TWD if SMP
+	select HAVE_ARM_TWD
 	select PINCTRL_BERLIN_BG2CD
 
 config MACH_BERLIN_BG2Q
