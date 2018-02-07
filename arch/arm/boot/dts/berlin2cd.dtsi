@@ -57,7 +57,7 @@
 		#address-cells = <1>;
 		#size-cells = <0>;
 
-		cpu@0 {
+		cpu: cpu@0 {
 			compatible = "arm,cortex-a9";
 			device_type = "cpu";
 			next-level-cache = <&l2>;
@@ -90,6 +90,7 @@
 		pmu {
 			compatible = "arm,cortex-a9-pmu";
 			interrupts = <GIC_SPI 30 IRQ_TYPE_LEVEL_HIGH>;
+			interrupt-affinity = <&cpu>;
 		};
 
 		sdhci0: sdhci@ab0000 {
