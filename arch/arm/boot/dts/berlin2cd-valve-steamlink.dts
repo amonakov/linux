@@ -20,6 +20,14 @@
 		gpio = <&porta 5 GPIO_ACTIVE_HIGH>;
 		enable-active-high;
 	};
+
+	gpio-restart {
+		compatible = "gpio-restart";
+		gpios = <&porta 6 GPIO_ACTIVE_HIGH>;
+		active-delay = <100>;
+		inactive-delay = <10>;
+		wait-delay = <100>;
+	};
 };
 
 &sdhci0 {
