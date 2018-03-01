@@ -27,6 +27,7 @@
 		active-delay = <100>;
 		inactive-delay = <10>;
 		wait-delay = <100>;
+		priority = <200>;
 	};
 };
 
