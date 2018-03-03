@@ -12,15 +12,6 @@
 		reg = <0x00000000 0x20000000>; /* 512 MB */
 	};
 
-	reg_usb1_vbus: regulator_usb1 {
-		compatible = "regulator-fixed";
-		regulator-name = "usb1_vbus";
-		regulator-min-microvolt = <5000000>;
-		regulator-max-microvolt = <5000000>;
-		gpio = <&porta 5 GPIO_ACTIVE_HIGH>;
-		enable-active-high;
-	};
-
 	gpio-restart {
 		compatible = "gpio-restart";
 		gpios = <&porta 6 GPIO_ACTIVE_HIGH>;
@@ -42,7 +33,6 @@
 
 &usb1 {
 	dr_mode = "host";
-	vbus-supply = <&reg_usb1_vbus>;
 	status = "okay";
 };
 
