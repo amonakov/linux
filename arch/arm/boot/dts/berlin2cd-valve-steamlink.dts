@@ -4,7 +4,7 @@
 #include <dt-bindings/gpio/gpio.h>
 
 / {
-	model = "Valve Steamlink";
+	model = "Valve Steam Link";
 	compatible = "valve,steamlink", "marvell,berlin2cd", "marvell,berlin";
 
 	memory@0 {
@@ -22,13 +22,27 @@
 	};
 };
 
+&cpu {
+	operating-points = <
+		/* kHz    uV */
+		1000000 1325000
+	>;
+};
+
+/* Fixed interface to on-board Marvell 8897 Wi-Fi/Bluetooth/NFC chip. */
 &sdhci0 {
+	keep-power-in-suspend;
 	non-removable;
 	status = "okay";
 };
 
-&uart0 { status = "okay"; };
+&uart0 {
+	/* RX/TX are routed to TP50/TP51 on the board. */
+	status = "okay";
+};
 
+/* The SoC is connected to on-board USB hub, with one downstream port wired
+ * to the on-board Steam Controller wireless receiver chip. */
 &usb_phy1 { status = "okay"; };
 
 &usb1 {
@@ -37,10 +51,3 @@
 };
 
 &eth1 { status = "okay"; };
-
-&cpu {
-	operating-points = <
-		/* kHz    uV */
-		1000000 1200000
-	>;
-};
