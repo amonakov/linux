@@ -23,10 +23,32 @@
 };
 
 &cpu {
+	cpu-supply = <&vcpu>;
 	operating-points = <
 		/* kHz    uV */
 		1000000 1325000
 	>;
+};
+
+&i2c0 {
+	status = "okay";
+
+	/* There are two regulators on the board. One is accessible via I2C,
+	 * with buck1 providing SoC power (set up by bootloader to 1.325V or
+	 * less depending on leakage value in OTP), and buck2 likely used for
+	 * DRAM (providing 1.35V). The other regulator on the opposite side
+	 * of the board is probably supplying SDIO and NAND fixed voltages. */
+	regulator@19 {
+		compatible = "marvell,88pg868";
+		reg = <0x19>;
+
+		vcpu: buck1 {
+			regulator-boot-on;
+			regulator-always-on;
+			regulator-min-microvolt = <1000000>;
+			regulator-max-microvolt = <1325000>;
+		};
+	};
 };
 
 /* Fixed interface to on-board Marvell 8897 Wi-Fi/Bluetooth/NFC chip. */
