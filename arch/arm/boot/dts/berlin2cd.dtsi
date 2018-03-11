@@ -90,7 +90,6 @@
 		pmu {
 			compatible = "arm,cortex-a9-pmu";
 			interrupts = <GIC_SPI 30 IRQ_TYPE_LEVEL_HIGH>;
-			interrupt-affinity = <&cpu>;
 		};
 
 		sdhci0: sdhci@ab0000 {
