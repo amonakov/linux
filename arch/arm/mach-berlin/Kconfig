@@ -30,7 +30,6 @@ config MACH_BERLIN_BG2CD
 	select HAVE_ARM_SCU
 	select HAVE_ARM_TWD
 	select PINCTRL_BERLIN_BG2CD
-	select PL310_ERRATA_769419
 
 config MACH_BERLIN_BG2Q
 	bool "Marvell Armada 1500 Pro (BG2-Q)"
